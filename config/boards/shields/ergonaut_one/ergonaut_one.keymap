@@ -113,6 +113,20 @@
                 bindings = <&to_english>;
                 require-prior-idle-ms = <300>;
             };
+            combo_rus2 {
+                timeout-ms = <50>;
+                key-positions = <38 39>;
+                layers = <ENG>;
+                bindings = <&to_russian>;
+                require-prior-idle-ms = <300>;
+            };
+            combo_eng2 {
+                timeout-ms = <50>;
+                key-positions = <38 39>;
+                layers = <RUS>;
+                bindings = <&to_english>;
+                require-prior-idle-ms = <300>;
+            };
         };
 
         keymap {
