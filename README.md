@@ -1,6 +1,6 @@
-# ZMK Firmware for Ergonaut One keyboard
+# ZMK Firmware for Dactyl Manuform mini 4x6_5
 
-This is a repository for a ZMK Firmware for Ergonaut One keyboard.
+This is a repository for a ZMK Firmware for Dactyl Manuform mini 4x6_5 keyboard.
 
 ## Default keymap
 
