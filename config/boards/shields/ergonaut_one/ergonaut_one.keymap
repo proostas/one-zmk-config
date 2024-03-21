@@ -18,8 +18,8 @@
 #define MED 7
 #define MOS 8
 
-#define U_TO_RUS_SCUT LC(LA(N2))
-#define U_TO_ENG_SCUT LC(LA(N1))
+#define U_TO_RUS_SCUT LC(LS(N2))
+#define U_TO_ENG_SCUT LC(LS(N1))
 
 #define U_TAPPING_TERM 200
 #define U_QUICK_TAP 0
