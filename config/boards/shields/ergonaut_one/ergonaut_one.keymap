@@ -246,7 +246,14 @@
                 mods = <(MOD_RALT|MOD_RCTL)>;
                 keep-mods = <(MOD_RALT|MOD_RCTL)>;
             };
-            // Numeric . or ,
+            // -- English Number layer --
+            numabr: numeric_angle_brackets {
+                compatible = "zmk,behavior-mod-morph";
+                label = "NUMERIC_ANGLE_BRACKETS";
+                #binding-cells = <0>;
+                bindings = <&kp LESS_THAN>, <&kp GREATER_THAN>;
+                mods = <(MOD_RSFT)>;
+            };
             num7: numeric_7 {
                 compatible = "zmk,behavior-mod-morph";
                 label = "NUMERIC_7";
@@ -268,6 +275,7 @@
                 bindings = <&kp N0>, <&kp AMPERSAND>;
                 mods = <(MOD_RSFT)>;
             };
+            // Numeric . or ,
             numdorc: numeric_dot_or_comma {
                 compatible = "zmk,behavior-mod-morph";
                 label = "NUMERIC_DOT_OR_COMMA";
@@ -462,14 +470,14 @@
                 };
                 english_number_layer {
 // ╭───────┬───────┬───────┬───────┬───────┬───────╮     ╭───────┬───────┬───────┬───────┬───────┬───────╮
-// |       |   [   |  7/(  |   8   |  9/)  |   ]   |     |       |       | SPACE |       |  ESC  |       |
+// |  </>  |   [   |  7/(  |   8   |  9/)  |   ]   |     |       |       | SPACE |       |  ESC  |       |
 // |       |   ;   |   4   |   5   |   6   |   =   |     |  BKSP | RCTRL | RSHFT |  RALT |  RGUI |       |
 // |       |   `   |   1   |   2   |   3   |   \   |     |       |       |       |       |       |       |
 // ╰───────┴───────┴───────┼───────┼───────┼───────┤     ├───────┼───────┼───────┼───────────────────────╯
 //                         |  ./,  |  0/&  |   -   |     |       |       |       |
 //                         ╰───────┴───────┴───────╯     ╰───────┴───────┴───────╯
                         bindings = <
-          &none     &kp LBKT      &num7         &kp N8        &num9             &kp RBKT      &none         &none             &kp SPACE     &none      &kp ESC        &none           
+          &numabr   &kp LBKT      &num7         &kp N8        &num9             &kp RBKT      &none         &none             &kp SPACE     &none      &kp ESC        &none           
           &none     &kp SEMI      &kp N4        &kp N5        &kp N6            &kp EQUAL     &kp BSPC      &kp RCTRL         &kp RSHFT     &kp RALT   &kp RGUI       &none
           &none     &kp GRAVE     &kp N1        &kp N2        &kp N3            &kp BSLH      &none         &none             &none         &none      &none          &none
                                             &numdorc  &num0           &kp MINUS    &none         &none           &none
