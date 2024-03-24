@@ -65,6 +65,10 @@
     trigger-period-ms = <8>;      // 16
 };
 
+&caps_word {
+    continue-list = <UNDERSCORE RS(MINUS) BACKSPACE DELETE>;
+};
+
 / {
         behaviors {
             lsht: left_shift_tap {
