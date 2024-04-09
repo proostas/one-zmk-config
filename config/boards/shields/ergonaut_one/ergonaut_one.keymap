@@ -7,6 +7,7 @@
 #define ZMK_MOUSE_DEFAULT_SCRL_VAL 20   // 10
 
 #include <dt-bindings/zmk/mouse.h>
+#include <behaviors/mouse_keys.dtsi>
 
 #define ENG 0
 #define ENN 1
