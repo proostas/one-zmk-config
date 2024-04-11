@@ -629,12 +629,12 @@
             ZMK_MACRO(to_russian,
                 wait-ms = <20>;
                 tap-ms = <20>;
-                bindings = <&macro_tap &kp U_TO_RUS_SCUT>, <&macro_tap &tog RUS>;
+                bindings = <&kp U_TO_RUS_SCUT>, <&tog RUS>;
             )
             ZMK_MACRO(to_english,
                 wait-ms = <20>;
                 tap-ms = <20>;
-                bindings = <&macro_tap &kp U_TO_ENG_SCUT>, <&macro_tap &tog RUS>;
+                bindings = <&kp U_TO_ENG_SCUT>, <&tog RUS>;
             )
             engkp: english_kp {
                 compatible = "zmk,behavior-macro-one-param";
@@ -642,10 +642,10 @@
                 tap-ms = <20>;
                 #binding-cells = <1>;
                 bindings 
-                    = <&macro_tap &kp U_TO_ENG_SCUT>
+                    = <&kp U_TO_ENG_SCUT>
                     , <&macro_param_1to1>
-                    , <&macro_tap &kp MACRO_PLACEHOLDER>
-                    , <&macro_tap &kp U_TO_RUS_SCUT>
+                    , <&kp MACRO_PLACEHOLDER>
+                    , <&kp U_TO_RUS_SCUT>
                     ;
                 
             };
