@@ -172,6 +172,15 @@
             
             
             // Russian layer
+            //  Ц >> Q
+            dikw: diktor_w {
+                compatible = "zmk,behavior-mod-morph";
+                label = "DIKTOR_COL_MODS_FOR_W";
+                #binding-cells = <0>;
+                bindings = <&kp W>, <&kp Q>;
+                mods = <(MOD_RCTL|MOD_RALT|MOD_RGUI)>;
+                keep-mods = <(MOD_RCTL|MOD_RALT|MOD_RGUI)>;
+            };
             //  ь/ъ >> W
             dikm: diktor_m {
                 compatible = "zmk,behavior-mod-morph";
@@ -197,21 +206,73 @@
                 mods = <(MOD_RCTL|MOD_RALT|MOD_RGUI)>;
                 keep-mods = <(MOD_RCTL|MOD_RALT|MOD_RGUI)>;
             };
-            //  ,/?
+            //  ,/? >> P
+            dikqmark: diktor_qmark {
+                compatible = "zmk,behavior-mod-morph";
+                label = "DIKTOR_COL_MODS_FOR_QMARK";
+                #binding-cells = <0>;
+                bindings = <&kp QMARK>, <&kp P>;
+                mods = <(MOD_RCTL|MOD_RALT|MOD_RGUI)>;
+                keep-mods = <(MOD_RCTL|MOD_RALT|MOD_RGUI)>;
+            };
             dcomma: diktor_comma {
                 compatible = "zmk,behavior-mod-morph";
                 label = "DIKTOR_COMMA_QUESTION_MARK";
                 #binding-cells = <0>;
-                bindings = <&kp QMARK>, <&kp AMPS>;
+                bindings = <&dikqmark>, <&kp AMPS>;
                 mods = <(MOD_RSFT)>;
             };
-            //  ./!
+            //  ./! >> B
+            dikslash: diktor_slash {
+                compatible = "zmk,behavior-mod-morph";
+                label = "DIKTOR_COL_MODS_FOR_SLASH";
+                #binding-cells = <0>;
+                bindings = <&kp SLASH>, <&kp B>;
+                mods = <(MOD_RCTL|MOD_RALT|MOD_RGUI)>;
+                keep-mods = <(MOD_RCTL|MOD_RALT|MOD_RGUI)>;
+            };
             ddot: diktor_dot {
                 compatible = "zmk,behavior-mod-morph";
                 label = "DIKTOR_DOT_EXCLAMATION_MARK";
                 #binding-cells = <0>;
-                bindings = <&kp SLASH>, <&kp EXCL>;
+                bindings = <&dikslash>, <&kp EXCL>;
                 mods = <(MOD_RSFT)>;
+            };
+            //  З >> J
+            dikp: diktor_p {
+                compatible = "zmk,behavior-mod-morph";
+                label = "DIKTOR_COL_MODS_FOR_P";
+                #binding-cells = <0>;
+                bindings = <&kp P>, <&kp J>;
+                mods = <(MOD_LCTL|MOD_LALT|MOD_LGUI)>;
+                keep-mods = <(MOD_LCTL|MOD_LALT|MOD_LGUI)>;
+            };
+            //  В >> L
+            dikd: diktor_d {
+                compatible = "zmk,behavior-mod-morph";
+                label = "DIKTOR_COL_MODS_FOR_D";
+                #binding-cells = <0>;
+                bindings = <&kp D>, <&kp L>;
+                mods = <(MOD_LCTL|MOD_LALT|MOD_LGUI)>;
+                keep-mods = <(MOD_LCTL|MOD_LALT|MOD_LGUI)>;
+            };
+            //  К >> U
+            dikr: diktor_r {
+                compatible = "zmk,behavior-mod-morph";
+                label = "DIKTOR_COL_MODS_FOR_R";
+                #binding-cells = <0>;
+                bindings = <&kp R>, <&kp U>;
+                mods = <(MOD_LCTL|MOD_LALT|MOD_LGUI)>;
+                keep-mods = <(MOD_LCTL|MOD_LALT|MOD_LGUI)>;
+            };
+            //  Д >> Y
+            dikl: diktor_l {
+                compatible = "zmk,behavior-mod-morph";
+                label = "DIKTOR_COL_MODS_FOR_L";
+                #binding-cells = <0>;
+                bindings = <&kp L>, <&kp Y>;
+                mods = <(MOD_LCTL|MOD_LALT|MOD_LGUI)>;
+                keep-mods = <(MOD_LCTL|MOD_LALT|MOD_LGUI)>;
             };
             //  Ь/Ъ
             dbsoft: diktor_big_soft {
@@ -220,6 +281,27 @@
                 #binding-cells = <0>;
                 bindings = <&kp RS(M)>, <&kp RBRC>;
                 mods = <(MOD_RSFT)>;
+            };
+            //  У >> A
+            dike: diktor_e {
+                compatible = "zmk,behavior-mod-morph";
+                label = "DIKTOR_COL_MODS_FOR_E";
+                #binding-cells = <0>;
+                bindings = <&kp E>, <&kp A>;
+                mods = <(MOD_RCTL|MOD_RALT|MOD_RGUI)>;
+                keep-mods = <(MOD_RCTL|MOD_RALT|MOD_RGUI)>;
+            };
+            mtde: mod_tap_dike {
+                compatible = "zmk,behavior-hold-tap";
+                label = "MOD_TAP_DIKTOR_E";
+                flavor = "balanced";
+                hold-trigger-key-positions = <RIGHT_HAND_KEYS RIGHT_THUMB_KEYS>;
+                hold-trigger-on-release; // for combining HRMs
+                tapping-term-ms = <U_TAPPING_TERM>;
+                quick-tap-ms = <U_QUICK_TAP>;
+                require-prior-idle-ms = <U_STREAK_DECAY>;
+                #binding-cells = <2>;
+                bindings = <&kp>, <&dike>;
             };
             //  И >> R
             dikb: diktor_b {
@@ -262,6 +344,128 @@
                 #binding-cells = <2>;
                 bindings = <&kp>, <&dikt>;
             };
+            //  О >> T
+            dikj: diktor_j {
+                compatible = "zmk,behavior-mod-morph";
+                label = "DIKTOR_COL_MODS_FOR_J";
+                #binding-cells = <0>;
+                bindings = <&kp J>, <&kp T>;
+                mods = <(MOD_RCTL|MOD_RALT|MOD_RGUI)>;
+                keep-mods = <(MOD_RCTL|MOD_RALT|MOD_RGUI)>;
+            };
+            mtdj: mod_tap_dikj {
+                compatible = "zmk,behavior-hold-tap";
+                label = "MOD_TAP_DIKTOR_J";
+                flavor = "balanced";
+                hold-trigger-key-positions = <RIGHT_HAND_KEYS RIGHT_THUMB_KEYS>;
+                hold-trigger-on-release; // for combining HRMs
+                tapping-term-ms = <U_TAPPING_TERM>;
+                quick-tap-ms = <U_QUICK_TAP>;
+                require-prior-idle-ms = <U_STREAK_DECAY>;
+                #binding-cells = <2>;
+                bindings = <&kp>, <&dikj>;
+            };
+            //  А >> G
+            dikf: diktor_f {
+                compatible = "zmk,behavior-mod-morph";
+                label = "DIKTOR_COL_MODS_FOR_F";
+                #binding-cells = <0>;
+                bindings = <&kp F>, <&kp G>;
+                mods = <(MOD_RCTL|MOD_RALT|MOD_RGUI)>;
+                keep-mods = <(MOD_RCTL|MOD_RALT|MOD_RGUI)>;
+            };
+            //  Л >> M
+            dikk: diktor_k {
+                compatible = "zmk,behavior-mod-morph";
+                label = "DIKTOR_COL_MODS_FOR_K";
+                #binding-cells = <0>;
+                bindings = <&kp K>, <&kp M>;
+                mods = <(MOD_LCTL|MOD_LALT|MOD_LGUI)>;
+                keep-mods = <(MOD_LCTL|MOD_LALT|MOD_LGUI)>;
+            };
+            //  Н >> N
+            diky: diktor_y {
+                compatible = "zmk,behavior-mod-morph";
+                label = "DIKTOR_COL_MODS_FOR_Y";
+                #binding-cells = <0>;
+                bindings = <&kp Y>, <&kp N>;
+                mods = <(MOD_LCTL|MOD_LALT|MOD_LGUI)>;
+                keep-mods = <(MOD_LCTL|MOD_LALT|MOD_LGUI)>;
+            };
+            mtdy: mod_tap_diky {
+                compatible = "zmk,behavior-hold-tap";
+                label = "MOD_TAP_DIKTOR_Y";
+                flavor = "balanced";
+                hold-trigger-key-positions = <LEFT_HAND_KEYS LEFT_THUMB_KEYS>;
+                hold-trigger-on-release; // for combining HRMs
+                tapping-term-ms = <U_TAPPING_TERM>;
+                quick-tap-ms = <U_QUICK_TAP>;
+                require-prior-idle-ms = <U_STREAK_DECAY>;
+                #binding-cells = <2>;
+                bindings = <&kp>, <&diky>;
+            };
+            //  Т >> E
+            dikn: diktor_n {
+                compatible = "zmk,behavior-mod-morph";
+                label = "DIKTOR_COL_MODS_FOR_N";
+                #binding-cells = <0>;
+                bindings = <&kp N>, <&kp E>;
+                mods = <(MOD_LCTL|MOD_LALT|MOD_LGUI)>;
+                keep-mods = <(MOD_LCTL|MOD_LALT|MOD_LGUI)>;
+            };
+            mtdn: mod_tap_dikn {
+                compatible = "zmk,behavior-hold-tap";
+                label = "MOD_TAP_DIKTOR_N";
+                flavor = "balanced";
+                hold-trigger-key-positions = <LEFT_HAND_KEYS LEFT_THUMB_KEYS>;
+                hold-trigger-on-release; // for combining HRMs
+                tapping-term-ms = <U_TAPPING_TERM>;
+                quick-tap-ms = <U_QUICK_TAP>;
+                #binding-cells = <2>;
+                bindings = <&kp>, <&dikn>;
+            };
+            //  С >> I
+            dikc: diktor_c {
+                compatible = "zmk,behavior-mod-morph";
+                label = "DIKTOR_COL_MODS_FOR_C";
+                #binding-cells = <0>;
+                bindings = <&kp C>, <&kp I>;
+                mods = <(MOD_LCTL|MOD_LALT|MOD_LGUI)>;
+                keep-mods = <(MOD_LCTL|MOD_LALT|MOD_LGUI)>;
+            };
+            mtdc: mod_tap_dikc {
+                compatible = "zmk,behavior-hold-tap";
+                label = "MOD_TAP_DIKTOR_C";
+                flavor = "balanced";
+                hold-trigger-key-positions = <LEFT_HAND_KEYS LEFT_THUMB_KEYS>;
+                hold-trigger-on-release; // for combining HRMs
+                tapping-term-ms = <U_TAPPING_TERM>;
+                quick-tap-ms = <U_QUICK_TAP>;
+                require-prior-idle-ms = <U_STREAK_DECAY>;
+                #binding-cells = <2>;
+                bindings = <&kp>, <&dikc>;
+            };
+            //  Р >> O
+            dikh: diktor_h {
+                compatible = "zmk,behavior-mod-morph";
+                label = "DIKTOR_COL_MODS_FOR_H";
+                #binding-cells = <0>;
+                bindings = <&kp H>, <&kp O>;
+                mods = <(MOD_LCTL|MOD_LALT|MOD_LGUI)>;
+                keep-mods = <(MOD_LCTL|MOD_LALT|MOD_LGUI)>;
+            };
+            mtdh: mod_tap_dikh {
+                compatible = "zmk,behavior-hold-tap";
+                label = "MOD_TAP_DIKTOR_H";
+                flavor = "balanced";
+                hold-trigger-key-positions = <LEFT_HAND_KEYS LEFT_THUMB_KEYS>;
+                hold-trigger-on-release; // for combining HRMs
+                tapping-term-ms = <U_TAPPING_TERM>;
+                quick-tap-ms = <U_QUICK_TAP>;
+                require-prior-idle-ms = <U_STREAK_DECAY>;
+                #binding-cells = <2>;
+                bindings = <&kp>, <&dikh>;
+            };
             //  Ф >> Z
             dika: diktor_a {
                 compatible = "zmk,behavior-mod-morph";
@@ -289,6 +493,15 @@
                 mods = <(MOD_RCTL|MOD_RALT|MOD_RGUI)>;
                 keep-mods = <(MOD_RCTL|MOD_RALT|MOD_RGUI)>;
             };
+            //  Ы >> D
+            diks: diktor_s {
+                compatible = "zmk,behavior-mod-morph";
+                label = "DIKTOR_COL_MODS_FOR_S";
+                #binding-cells = <0>;
+                bindings = <&kp S>, <&kp D>;
+                mods = <(MOD_RCTL|MOD_RALT|MOD_RGUI)>;
+                keep-mods = <(MOD_RCTL|MOD_RALT|MOD_RGUI)>;
+            };
             //  Ю >> V
             dikdot: diktor_dot_oo {
                 compatible = "zmk,behavior-mod-morph";
@@ -297,6 +510,24 @@
                 bindings = <&kp DOT>, <&kp V>;
                 mods = <(MOD_RCTL|MOD_RALT|MOD_RGUI)>;
                 keep-mods = <(MOD_RCTL|MOD_RALT|MOD_RGUI)>;
+            };
+            //  Б >> K
+            dikcomma: diktor_comma_oo {
+                compatible = "zmk,behavior-mod-morph";
+                label = "DIKTOR_COL_MODS_FOR_COMMA";
+                #binding-cells = <0>;
+                bindings = <&kp COMMA>, <&kp K>;
+                mods = <(MOD_LCTL|MOD_LALT|MOD_LGUI)>;
+                keep-mods = <(MOD_LCTL|MOD_LALT|MOD_LGUI)>;
+            };
+            //  М >> H
+            dikv: diktor_v {
+                compatible = "zmk,behavior-mod-morph";
+                label = "DIKTOR_COL_MODS_FOR_V";
+                #binding-cells = <0>;
+                bindings = <&kp V>, <&kp H>;
+                mods = <(MOD_LCTL|MOD_LALT|MOD_LGUI)>;
+                keep-mods = <(MOD_LCTL|MOD_LALT|MOD_LGUI)>;
             };
             
             // Russian Number layer
@@ -509,9 +740,9 @@
 //                         |  MED  |  BKSP |  RET  |     |  TAB  | SPACE |  MED  |
 //                         ╰───────┴───────┴───────╯     ╰───────┴───────┴───────╯
                         bindings = <
-          &kp GRAVE &kp W         &dsoft        &dikz         &dcomma           &ddot         &kp P         &kp D            &kp R         &kp L        &kp X         &kp I       
-          &dbsoft   &lmt LGUI E   &mtdb LALT B  &mtdt LSHFT T &lmt LCTRL J      &kp F         &kp K         &rmt RCTRL Y     &rsht RSHFT N &rmt RALT C  &rmt RGUI H   &kp Q
-          &kp BSLH  &dika         &dikapos      &diklbkt      &kp S             &dikdot       &kp COMMA     &kp V            &kp G         &kp U        &kp SEMI      &kp O
+          &kp GRAVE &dikw         &dsoft        &dikz         &dcomma           &ddot         &dikp         &dikd            &dikr         &dikl        &kp X         &kp I       
+          &dbsoft   &mtde LGUI E  &mtdb LALT B  &mtdt LSHFT T &mtdj LCTRL J     &dikf         &dikk         &mtdy RCTRL Y    &mtdn RSHFT N &mtdc RALT C &mtdh RGUI H  &kp Q
+          &kp BSLH  &dika         &dikapos      &diklbkt      &diks             &dikdot       &dikcomma     &dikv            &kp G         &kp U        &kp SEMI      &kp O
                                             &mo MED   &lt RUN BSPC   &lt MOS RET   &lt FUN TAB   &lt NUR SPACE   &mo MED
                         >;
                 };
