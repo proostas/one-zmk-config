@@ -18,6 +18,8 @@
 #define FUN 6
 #define MED 7
 #define MOS 8
+#define FMO 9
+#define SMO 10
 
 #define U_TO_RUS_SCUT LC(LS(N2))
 #define U_TO_ENG_SCUT LC(LS(N1))
@@ -623,6 +625,42 @@
                 bindings = <&kp N0>, <&engkp AMPERSAND>;
                 mods = <(MOD_RSFT)>;
             };
+            
+            // Mouse (de)acceleration
+            fmmv: fast_mouse_move {
+                compatible = "zmk,behavior-input-two-axis";
+                #binding-cells = <1>;
+                x-input-code = <INPUT_REL_X>;
+                y-input-code = <INPUT_REL_Y>;
+                acceleration-exponent = <1>;  // 1
+                time-to-max-speed-ms = <300>; // 300
+                delay-ms = <0>;
+                trigger-period-ms = <8>;      // 16
+            };
+            smmv: slow_mouse_move {
+                compatible = "zmk,behavior-input-two-axis";
+                #binding-cells = <1>;
+                x-input-code = <INPUT_REL_X>;
+                y-input-code = <INPUT_REL_Y>;
+                acceleration-exponent = <1>;  // 1
+                time-to-max-speed-ms = <300>; // 300
+                delay-ms = <0>;
+                trigger-period-ms = <8>;      // 16
+            };
+        };
+        
+        // Mouse (de)acceleration
+        fmmv_input_listener: fmmv_input_listener {
+            compatible = "zmk,input-listener";
+            device = <&fmmv>;
+            scale-multiplier = <2>;
+            scale-divisor = <1>;
+        };
+        smmv_input_listener: smmv_input_listener {
+            compatible = "zmk,input-listener";
+            device = <&smmv>;
+            scale-multiplier = <1>;
+            scale-divisor = <2>;
         };
 
         macros {
@@ -818,17 +856,47 @@
                 };
                 mouse_layer {
 // ╭───────┬───────┬───────┬───────┬───────┬───────╮     ╭───────┬───────┬───────┬───────┬───────┬───────╮
-// |       |  ESC  |       | LC(X) | LC(C) |       |     | SC_UP | SC_LT | MV_UP | SC_RT |       |       |
+// |       |  ESC  | SLOW  | LC(X) | LC(C) | FAST  |     | SC_UP | SC_LT | MV_UP | SC_RT |       |       |
 // |       |  LGUI | LALT  | LSHFT | LCTRL | LC(V) |     | SC_DN | MV_LT | MV_DN | MV_RT |  DEL  |       |
 // |       |       |       |       |       |       |     |       |  MB4  |  MB5  |       |       |       |
 // ╰───────┴───────┴───────┼───────┼───────┼───────┤     ├───────┼───────┼───────┼───────────────────────╯
 //                         |       |       |       |     |  RCLK |  LCLK |  MCLK |
 //                         ╰───────┴───────┴───────╯     ╰───────┴───────┴───────╯
                         bindings = <
-          &none         &kp ESC        &none          &kp LC(X)      &kp LC(C)      &none          &msc SCRL_UP     &msc SCRL_LEFT   &mmv MOVE_UP   &msc SCRL_RIGHT   &none          &none
+          &none         &kp ESC        &mo SMO        &kp LC(X)      &kp LC(C)      &mo FMO        &msc SCRL_UP     &msc SCRL_LEFT   &mmv MOVE_UP   &msc SCRL_RIGHT   &none          &none
           &none         &kp LGUI       &kp LALT       &kp LSHFT      &kp LCTRL      &kp LC(V)      &msc SCRL_DOWN   &mmv MOVE_LEFT   &mmv MOVE_DOWN &mmv MOVE_RIGHT   &kp DEL        &none
           &none         &none          &none          &none          &none          &none          &none            &mkp MB4         &mkp MB5       &none             &none          &none
                                              &none         &none          &none         &mkp RCLK      &mkp LCLK     &mkp MCLK
+                        >;
+                };
+                fast_mouse_layer {
+// ╭───────┬───────┬───────┬───────┬───────┬───────╮     ╭───────┬───────┬───────┬───────┬───────┬───────╮
+// |       |       |       |       |       |       |     |       |       | MV_UP |       |       |       |
+// |       |       |       |       |       |       |     |       | MV_LT | MV_DN | MV_RT |       |       |
+// |       |       |       |       |       |       |     |       |       |       |       |       |       |
+// ╰───────┴───────┴───────┼───────┼───────┼───────┤     ├───────┼───────┼───────┼───────────────────────╯
+//                         |       |       |       |     |       |       |       |
+//                         ╰───────┴───────┴───────╯     ╰───────┴───────┴───────╯
+                        bindings = <
+          &trans        &trans         &trans         &trans         &trans         &trans         &trans           &trans           &fmmv MOVE_UP   &trans            &trans         &trans
+          &trans        &trans         &trans         &trans         &trans         &trans         &trans           &fmmv MOVE_LEFT  &fmmv MOVE_DOWN &fmmv MOVE_RIGHT  &trans         &trans
+          &trans        &trans         &trans         &trans         &trans         &trans         &trans           &trans           &trans          &trans            &trans         &trans
+                                             &trans         &trans          &trans         &trans      &trans       &trans
+                        >;
+                };
+                slow_mouse_layer {
+// ╭───────┬───────┬───────┬───────┬───────┬───────╮     ╭───────┬───────┬───────┬───────┬───────┬───────╮
+// |       |       |       |       |       |       |     |       |       | MV_UP |       |       |       |
+// |       |       |       |       |       |       |     |       | MV_LT | MV_DN | MV_RT |       |       |
+// |       |       |       |       |       |       |     |       |       |       |       |       |       |
+// ╰───────┴───────┴───────┼───────┼───────┼───────┤     ├───────┼───────┼───────┼───────────────────────╯
+//                         |       |       |       |     |       |       |       |
+//                         ╰───────┴───────┴───────╯     ╰───────┴───────┴───────╯
+                        bindings = <
+          &trans        &trans         &trans         &trans         &trans         &trans         &trans           &trans           &smmv MOVE_UP   &trans            &trans         &trans
+          &trans        &trans         &trans         &trans         &trans         &trans         &trans           &smmv MOVE_LEFT  &smmv MOVE_DOWN &smmv MOVE_RIGHT  &trans         &trans
+          &trans        &trans         &trans         &trans         &trans         &trans         &trans           &trans           &trans          &trans            &trans         &trans
+                                             &trans         &trans          &trans         &trans      &trans       &trans
                         >;
                 };
         };
