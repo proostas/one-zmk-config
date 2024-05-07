@@ -876,16 +876,16 @@
                 };
                 mouse_layer {
 // ╭───────┬───────┬───────┬───────┬───────┬───────╮     ╭───────┬───────┬───────┬───────┬───────┬───────╮
-// |       |  ESC  | SLOW  | LC(X) | LC(C) | FAST  |     | SC_UP | SC_LT | MV_UP | SC_RT |       |       |
-// |       |  LGUI | LALT  | LSHFT | LCTRL | LC(V) |     | SC_DN | MV_LT | MV_DN | MV_RT |  DEL  |       |
-// |       |       |       |       |       |       |     |       |  MB4  |  MB5  |       |       |       |
+// |       |  ESC  |       | LC(X) | LC(C) | LC(V) |     | SC_UP | SC_LT | MV_UP | SC_RT |       |       |
+// |       |  LGUI | LALT  | LSHFT | LCTRL | FAST  |     | SC_DN | MV_LT | MV_DN | MV_RT |  DEL  |       |
+// |       |       |       |       |       | SLOW  |     |       |  MB4  |  MB5  |       |       |       |
 // ╰───────┴───────┴───────┼───────┼───────┼───────┤     ├───────┼───────┼───────┼───────────────────────╯
 //                         |       |       |       |     |  RCLK |  LCLK |  MCLK |
 //                         ╰───────┴───────┴───────╯     ╰───────┴───────┴───────╯
                         bindings = <
-          &none         &kp ESC        &mo SMO        &kp LC(X)      &kp LC(C)      &mo FMO        &msc SCRL_UP     &msc SCRL_LEFT   &mmv MOVE_UP   &msc SCRL_RIGHT   &none          &none
-          &none         &kp LGUI       &kp LALT       &kp LSHFT      &kp LCTRL      &kp LC(V)      &msc SCRL_DOWN   &mmv MOVE_LEFT   &mmv MOVE_DOWN &mmv MOVE_RIGHT   &kp DEL        &none
-          &none         &none          &none          &none          &none          &none          &none            &mkp MB4         &mkp MB5       &none             &none          &none
+          &none         &kp ESC        &none          &kp LC(X)      &kp LC(C)      &kp LC(V)      &msc SCRL_UP     &msc SCRL_LEFT   &mmv MOVE_UP   &msc SCRL_RIGHT   &none          &none
+          &none         &kp LGUI       &kp LALT       &kp LSHFT      &kp LCTRL      &mo FMO        &msc SCRL_DOWN   &mmv MOVE_LEFT   &mmv MOVE_DOWN &mmv MOVE_RIGHT   &kp DEL        &none
+          &none         &none          &none          &none          &none          &mo SMO        &none            &mkp MB4         &mkp MB5       &none             &none          &none
                                              &none         &none          &none         &mkp RCLK      &mkp LCLK     &mkp MCLK
                         >;
                 };
