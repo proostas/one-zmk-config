@@ -172,8 +172,14 @@
                 mods = <(MOD_RSFT)>;
             };
             
-            
             // Russian layer
+            ru_caps_word: russian_caps_word {
+                // behavior-caps-word is useless for Russian as it doesn't shift chars outside of a-z
+                // loking forward to PR#2043's &capslock_word
+                compatible = "zmk,behavior-caps-word";
+                #binding-cells = <0>;
+                continue-list = <UNDERSCORE RS(MINUS) BACKSPACE DELETE GRAVE LBKT RBKT APOS DOT COMMA SEMI>;
+            };
             //  Ц >> Q
             dikw: diktor_w {
                 compatible = "zmk,behavior-mod-morph";
@@ -772,14 +778,14 @@
 // ╭───────┬───────┬───────┬───────┬───────┬───────╮     ╭───────┬───────┬───────┬───────┬───────┬───────╮
 // |       |  ESC  | CAPS  |  RUS  |       |       |     | PG_UP | HOME  |  UP   |  END  |  INS  |       |
 // |       |  LGUI | LALT  | LSHFT | LCTRL |       |     | PG_DN | LEFT  | DOWN  | RIGHT |  DEL  |       |
-// |       |       |       |       |       |       |     |       |       | MENU  |       |       |       |
+// |       |       |       |       |       |       |     |       | CWORD | MENU  |       |       |       |
 // ╰───────┴───────┴───────┼───────┼───────┼───────┤     ├───────┼───────┼───────┼───────────────────────╯
 //                         |       |  (0)  |       |     |  TAB  | SPACE |       |
 //                         ╰───────┴───────┴───────╯     ╰───────┴───────┴───────╯
                         bindings = <
           &none     &kp ESC       &kp CAPS      &to_russian   &tog RUS          &none         &kp PG_UP     &kp HOME         &kp UP        &kp END      &kp INS       &none
           &none     &kp LGUI      &kp LALT      &kp LSHFT     &kp LCTRL         &none         &kp PG_DN     &kp LEFT         &kp DOWN      &kp RIGHT    &kp DEL       &none
-          &none     &none         &none         &none         &none             &none         &none         &none            &kp K_CMENU   &none        &none         &none
+          &none     &none         &none         &none         &none             &none         &none         &caps_word       &kp K_CMENU   &none        &none         &none
                                             &none     &none          &none         &kp TAB       &kp SPACE       &none
                         >;
                 };
@@ -817,14 +823,14 @@
 // ╭───────┬───────┬───────┬───────┬───────┬───────╮     ╭───────┬───────┬───────┬───────┬───────┬───────╮
 // |       |  ESC  | CAPS  |  ENG  |       |       |     | PG_UP | HOME  |  UP   |  END  |  INS  |       |
 // |       |  LGUI | LALT  | LSHFT | LCTRL |       |     | PG_DN | LEFT  | DOWN  | RIGHT |  DEL  |       |
-// |       |       |       |       |       |       |     |       |       | MENU  |       |       |       |
+// |       |       |       |       |       |       |     |       | CWORD | MENU  |       |       |       |
 // ╰───────┴───────┴───────┼───────┼───────┼───────┤     ├───────┼───────┼───────┼───────────────────────╯
 //                         |       |  (0)  |       |     |  TAB  | SPACE |       |
 //                         ╰───────┴───────┴───────╯     ╰───────┴───────┴───────╯
                         bindings = <
           &none     &kp ESC       &kp CAPS      &to_english   &tog RUS          &none         &kp PG_UP     &kp HOME         &kp UP        &kp END      &kp INS       &none
           &none     &kp LGUI      &kp LALT      &kp LSHFT     &kp LCTRL         &none         &kp PG_DN     &kp LEFT         &kp DOWN      &kp RIGHT    &kp DEL       &none
-          &none     &none         &none         &none         &none             &none         &none         &none            &kp K_CMENU   &none        &none         &none
+          &none     &none         &none         &none         &none             &none         &none         &ru_caps_word    &kp K_CMENU   &none        &none         &none
                                             &none     &none          &none         &kp TAB       &kp SPACE       &none
                         >;
                 };
@@ -846,14 +852,14 @@
 
                 function_layer {
 // ╭───────┬───────┬───────┬───────┬───────┬───────╮     ╭───────┬───────┬───────┬───────┬───────┬───────╮
-// |       |  F12  |  F7   |  F8   |  F9   | PSCRN |     |       |       | CWORD |       |  ESC  |       |
+// |       |  F12  |  F7   |  F8   |  F9   | PSCRN |     |       |       |       |       |  ESC  |       |
 // |       |  F11  |  F4   |  F5   |  F6   | SLCK  |     |       | RCTRL | RSHFT |  RALT |  RGUI |       |
 // |       |  F10  |  F1   |  F2   |  F3   | PAUSE |     |       |       |       |       |       |       |
 // ╰───────┴───────┴───────┼───────┼───────┼───────┤     ├───────┼───────┼───────┼───────────────────────╯
 //                         |       |  BKSP |  RET  |     |  (0)  |       |       |
 //                         ╰───────┴───────┴───────╯     ╰───────┴───────┴───────╯
                         bindings = <
-          &none     &kp F12       &kp F7        &kp F8        &kp F9            &kp PSCRN       &none       &none             &caps_word    &none       &kp ESC        &none   
+          &none     &kp F12       &kp F7        &kp F8        &kp F9            &kp PSCRN       &none       &none             &none         &none       &kp ESC        &none   
           &none     &kp F11       &kp F4        &kp F5        &kp F6            &kp SLCK        &none       &kp RCTRL         &kp RSHFT     &kp RALT    &kp RGUI       &none
           &none     &kp F10       &kp F1        &kp F2        &kp F3            &kp PAUSE_BREAK &none       &none             &none         &none       &none          &none
                                             &none      &kp BSPC      &kp RET      &none         &none           &none
