@@ -777,15 +777,15 @@
                 };
                 english_nav_layer {
 // ╭───────┬───────┬───────┬───────┬───────┬───────╮     ╭───────┬───────┬───────┬───────┬───────┬───────╮
-// |  BTN  |  ESC  | CAPS  |  RUS  |       |       |     | PG_UP | HOME  |  UP   |  END  |  INS  |       |
-// |       |  LGUI | LALT  | LSHFT | LCTRL |       |     | PG_DN | LEFT  | DOWN  | RIGHT |  DEL  |       |
+// |       |  ESC  | CAPS  |  RUS  |       |       |     | PG_UP | HOME  |  UP   |  END  |  INS  |       |
+// |       |  LGUI | LALT  | LSHFT | LCTRL |  BTN  |     | PG_DN | LEFT  | DOWN  | RIGHT |  DEL  |       |
 // |       |       |       |       |       |       |     |       | CWORD | MENU  |       |       |       |
 // ╰───────┴───────┴───────┼───────┼───────┼───────┤     ├───────┼───────┼───────┼───────────────────────╯
 //                         |       |  (0)  |       |     |  TAB  | SPACE |       |
 //                         ╰───────┴───────┴───────╯     ╰───────┴───────┴───────╯
                         bindings = <
-          &tog BTN  &kp ESC       &kp CAPS      &to_russian   &tog RUS          &none         &kp PG_UP     &kp HOME         &kp UP        &kp END      &kp INS       &none
-          &none     &kp LGUI      &kp LALT      &kp LSHFT     &kp LCTRL         &none         &kp PG_DN     &kp LEFT         &kp DOWN      &kp RIGHT    &kp DEL       &none
+          &none     &kp ESC       &kp CAPS      &to_russian   &tog RUS          &none         &kp PG_UP     &kp HOME         &kp UP        &kp END      &kp INS       &none
+          &none     &kp LGUI      &kp LALT      &kp LSHFT     &kp LCTRL         &tog BTN      &kp PG_DN     &kp LEFT         &kp DOWN      &kp RIGHT    &kp DEL       &none
           &none     &none         &none         &none         &none             &none         &none         &caps_word       &kp K_CMENU   &none        &none         &none
                                             &none     &none          &none         &kp TAB       &kp SPACE       &none
                         >;
@@ -822,15 +822,15 @@
                 };
                 russian_nav_layer {
 // ╭───────┬───────┬───────┬───────┬───────┬───────╮     ╭───────┬───────┬───────┬───────┬───────┬───────╮
-// |  BTN  |  ESC  | CAPS  |  ENG  |       |       |     | PG_UP | HOME  |  UP   |  END  |  INS  |       |
-// |       |  LGUI | LALT  | LSHFT | LCTRL |       |     | PG_DN | LEFT  | DOWN  | RIGHT |  DEL  |       |
+// |       |  ESC  | CAPS  |  ENG  |       |       |     | PG_UP | HOME  |  UP   |  END  |  INS  |       |
+// |       |  LGUI | LALT  | LSHFT | LCTRL |  BTN  |     | PG_DN | LEFT  | DOWN  | RIGHT |  DEL  |       |
 // |       |       |       |       |       |       |     |       | CWORD | MENU  |       |       |       |
 // ╰───────┴───────┴───────┼───────┼───────┼───────┤     ├───────┼───────┼───────┼───────────────────────╯
 //                         |       |  (0)  |       |     |  TAB  | SPACE |       |
 //                         ╰───────┴───────┴───────╯     ╰───────┴───────┴───────╯
                         bindings = <
-          &tog BTN  &kp ESC       &kp CAPS      &to_english   &tog RUS          &none         &kp PG_UP     &kp HOME         &kp UP        &kp END      &kp INS       &none
-          &none     &kp LGUI      &kp LALT      &kp LSHFT     &kp LCTRL         &none         &kp PG_DN     &kp LEFT         &kp DOWN      &kp RIGHT    &kp DEL       &none
+          &none     &kp ESC       &kp CAPS      &to_english   &tog RUS          &none         &kp PG_UP     &kp HOME         &kp UP        &kp END      &kp INS       &none
+          &none     &kp LGUI      &kp LALT      &kp LSHFT     &kp LCTRL         &tog BTN      &kp PG_DN     &kp LEFT         &kp DOWN      &kp RIGHT    &kp DEL       &none
           &none     &none         &none         &none         &none             &none         &none         &ru_caps_word    &kp K_CMENU   &none        &none         &none
                                             &none     &none          &none         &kp TAB       &kp SPACE       &none
                         >;
@@ -883,15 +883,15 @@
                 };
                 mouse_layer {
 // ╭───────┬───────┬───────┬───────┬───────┬───────╮     ╭───────┬───────┬───────┬───────┬───────┬───────╮
-// |       |  ESC  |       | LC(X) | LC(C) | LC(V) |     | SC_UP | SC_LT | MV_UP | SC_RT |       |       |
-// |       |  LGUI | LALT  | LSHFT | LCTRL | FAST  |     | SC_DN | MV_LT | MV_DN | MV_RT |  DEL  |       |
+// | REDO1 |  ESC  |  CUT  | COPY  | PASTE | UNDO  |     | SC_UP | SC_LT | MV_UP | SC_RT |  ALL  |       |
+// | REDO2 |  LGUI |  LALT | LSHFT | LCTRL | FAST  |     | SC_DN | MV_LT | MV_DN | MV_RT |  DEL  |       |
 // |       |       |       |       |       | SLOW  |     |       |  MB4  |  MB5  |       |       |       |
 // ╰───────┴───────┴───────┼───────┼───────┼───────┤     ├───────┼───────┼───────┼───────────────────────╯
 //                         |       |       |  (0)  |     |  RCLK |  LCLK |  MCLK |
 //                         ╰───────┴───────┴───────╯     ╰───────┴───────┴───────╯
                         bindings = <
-          &none         &kp ESC        &none          &kp LC(X)      &kp LC(C)      &kp LC(V)      &msc SCRL_UP     &msc SCRL_LEFT   &mmv MOVE_UP   &msc SCRL_RIGHT   &none          &none
-          &none         &kp LGUI       &kp LALT       &kp LSHFT      &kp LCTRL      &mo FMO        &msc SCRL_DOWN   &mmv MOVE_LEFT   &mmv MOVE_DOWN &mmv MOVE_RIGHT   &kp DEL        &none
+          &kp LC(Y)     &kp ESC        &kp LC(X)      &kp LC(C)      &kp LC(V)      &kp LC(Z)      &msc SCRL_UP     &msc SCRL_LEFT   &mmv MOVE_UP   &msc SCRL_RIGHT   &kp LC(A)      &none
+          &kp LC(LS(Z)) &kp LGUI       &kp LALT       &kp LSHFT      &kp LCTRL      &mo FMO        &msc SCRL_DOWN   &mmv MOVE_LEFT   &mmv MOVE_DOWN &mmv MOVE_RIGHT   &kp DEL        &none
           &none         &none          &none          &none          &none          &mo SMO        &none            &mkp MB4         &mkp MB5       &none             &none          &none
                                              &none         &none          &none         &mkp RCLK      &mkp LCLK     &mkp MCLK
                         >;
@@ -928,17 +928,17 @@
                 };
                 button_layer { // to work with an external pointing device
 // ╭───────┬───────┬───────┬───────┬───────┬───────╮     ╭───────┬───────┬───────┬───────┬───────┬───────╮
-// | UNTOG |  ESC  |  CUT  | COPY  | PASTE | REDO1 |     |       |       |       |       |       |       |
-// |  ALL  |  LGUI |  LALT | LSHFT | LCTRL | UNDO  |     |       |       |       |       |       |       |
-// |       |       |       |       |  DEL  | REDO2 |     |       |       |       |       |       |       |
+// | REDO1 |  ESC  |  CUT  | COPY  | PASTE | UNDO  |     |       |       |       |       |       |       |
+// | REDO2 |  LGUI |  LALT | LSHFT | LCTRL | UNTOG |     |       |       |       |       |       |       |
+// |       |       |       |       |  DEL  |  ALL  |     |       |       |       |       |       |       |
 // ╰───────┴───────┴───────┼───────┼───────┼───────┤     ├───────┼───────┼───────┼───────────────────────╯
 //                         | MCLK  | LCLK  | RCLK  |     |       |       |       |
 //                         ╰───────┴───────┴───────╯     ╰───────┴───────┴───────╯
                         bindings = <
-          &tog BTN     &kp ESC       &kp LC(X)     &kp LC(C)     &kp LC(V)     &kp LC(Y)     &none           &none           &none          &none            &none         &none
-          &kp LC(A)    &kp LGUI      &kp LALT      &kp LSHFT     &kp LCTRL     &kp LC(Z)     &none           &none           &none          &none            &none         &none
-          &none        &none         &none         &none         &kp DEL       &kp LC(LS(Z)) &none           &none           &none          &none            &none         &none
-                                                   &mkp MCLK     &mkp LCLK     &mkp RCLK     &none           &none           &none
+          &kp LC(Y)     &kp ESC       &kp LC(X)     &kp LC(C)     &kp LC(V)     &kp LC(Z)     &none           &none           &none          &none            &none         &none
+          &kp LC(LS(Z)) &kp LGUI      &kp LALT      &kp LSHFT     &kp LCTRL     &tog BTN      &none           &none           &none          &none            &none         &none
+          &none         &none         &none         &none         &kp DEL       &kp LC(A)     &none           &none           &none          &none            &none         &none
+                                                    &mkp MCLK     &mkp LCLK     &mkp RCLK     &none           &none           &none
                         >;
                 };
         };
