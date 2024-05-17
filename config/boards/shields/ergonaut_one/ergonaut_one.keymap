@@ -16,11 +16,12 @@
 #define RUN 4
 #define NUR 5
 #define FUN 6
-#define MED 7
-#define MOS 8
-#define FMO 9
-#define SMO 10
-#define BTN 11
+#define FN2 7
+#define MED 8
+#define MOS 9
+#define FMO 10
+#define SMO 11
+#define BTN 12
 
 #define U_TO_RUS_SCUT LC(LS(N2))
 #define U_TO_ENG_SCUT LC(LS(N1))
@@ -853,17 +854,32 @@
 
                 function_layer {
 // ╭───────┬───────┬───────┬───────┬───────┬───────╮     ╭───────┬───────┬───────┬───────┬───────┬───────╮
-// |       |  F12  |  F7   |  F8   |  F9   | PSCRN |     |       |       |       |       |  ESC  |       |
+// |       |  F12  |  F7   |  F8   |  F9   | PSCRN |     |       |       |  FN2  |       |  ESC  |       |
 // |       |  F11  |  F4   |  F5   |  F6   | SLCK  |     |       | RCTRL | RSHFT |  RALT |  RGUI |       |
 // |       |  F10  |  F1   |  F2   |  F3   | PAUSE |     |       |       |       |       |       |       |
 // ╰───────┴───────┴───────┼───────┼───────┼───────┤     ├───────┼───────┼───────┼───────────────────────╯
 //                         |       |  BKSP |  RET  |     |  (0)  |       |       |
 //                         ╰───────┴───────┴───────╯     ╰───────┴───────┴───────╯
                         bindings = <
-          &none     &kp F12       &kp F7        &kp F8        &kp F9            &kp PSCRN       &none       &none             &none         &none       &kp ESC        &none   
-          &none     &kp F11       &kp F4        &kp F5        &kp F6            &kp SLCK        &none       &kp RCTRL         &kp RSHFT     &kp RALT    &kp RGUI       &none
-          &none     &kp F10       &kp F1        &kp F2        &kp F3            &kp PAUSE_BREAK &none       &none             &none         &none       &none          &none
+          &kp F15   &kp F12       &kp F7        &kp F8        &kp F9            &kp PSCRN       &none       &none             &mo FN2       &none       &kp ESC        &none   
+          &kp F14   &kp F11       &kp F4        &kp F5        &kp F6            &kp SLCK        &none       &kp RCTRL         &kp RSHFT     &kp RALT    &kp RGUI       &none
+          &kp F13   &kp F10       &kp F1        &kp F2        &kp F3            &kp PAUSE_BREAK &none       &none             &none         &none       &none          &none
                                             &none      &kp BSPC      &kp RET      &none         &none           &none
+                        >;
+                };
+                function2_layer {
+// ╭───────┬───────┬───────┬───────┬───────┬───────╮     ╭───────┬───────┬───────┬───────┬───────┬───────╮
+// |       |  F24  |  F17  |  F18  |  F19  |       |     |       |       |  (1)  |       |       |       |
+// |       |  F23  |  F14  |  F15  |  F16  |       |     |       |       |       |       |       |       |
+// |       |  F20  |  F21  |  F22  |  F13  |       |     |       |       |       |       |       |       |
+// ╰───────┴───────┴───────┼───────┼───────┼───────┤     ├───────┼───────┼───────┼───────────────────────╯
+//                         |       |       |       |     |  (0)  |       |       |
+//                         ╰───────┴───────┴───────╯     ╰───────┴───────┴───────╯
+                        bindings = <
+          &trans    &kp F24       &kp F17       &kp F18       &kp F19           &trans          &trans      &trans            &trans        &trans       &trans        &trans   
+          &trans    &kp F23       &kp F14       &kp F15       &kp F16           &trans          &trans      &trans            &trans        &trans       &trans        &trans
+          &trans    &kp F20       &kp F21       &kp F22       &kp F13           &trans          &trans      &trans            &trans        &trans       &trans        &trans
+                                  &trans        &trans        &trans            &trans          &trans      &trans
                         >;
                 };
                 media_layer {
