@@ -337,14 +337,14 @@
                 };
                 english_number_layer {
 // ╭───────┬───────┬───────┬───────┬───────┬───────╮     ╭───────┬───────┬───────┬───────┬───────┬───────╮
-// | AMNW  |   [   |  7/(  |   8   |  9/)  |   ]   |     |       |   ,   | SPACE |       |  ESC  |       |
+// | AMNW  |   [   |  7/(  |   8   |  9/)  |   ]   |     |       |   ,   | SPACE |   .   |  ESC  |       |
 // | AMW   |   ;   |   4   |   5   |   6   |   =   |     |  BKSP | RCTRL | RSHFT |  RALT |  RGUI |       |
 // | AMSW  |   `   |   1   |   2   |   3   |   \   |     |       |       |       |       |       |       |
 // ╰───────┴───────┴───────┼───────┼───────┼───────┤     ├───────┼───────┼───────┼───────────────────────╯
 //                         |  ./,  |  0/&  |   -   |     |       |  (0)  |       |
 //                         ╰───────┴───────┴───────╯     ╰───────┴───────┴───────╯
                         bindings = <
-          &amennumnw   &kp LBKT      &num7         &kp N8        &num9             &kp RBKT      &none         &kp COMMA         &kp SPACE     &none      &kp ESC        &none           
+          &amennumnw   &kp LBKT      &num7         &kp N8        &num9             &kp RBKT      &none         &kp COMMA         &kp SPACE     &kp DOT    &kp ESC        &none           
           &amennumw    &kp SEMI      &kp N4        &kp N5        &kp N6            &kp EQUAL     &kp BSPC      &kp RCTRL         &kp RSHFT     &kp RALT   &kp RGUI       &none
           &amennumsw   &kp GRAVE     &kp N1        &kp N2        &kp N3            &kp BSLH      &none         &none             &none         &none      &none          &none
                                             &numdorc  &num0           &kp MINUS    &trans        &trans         &none
@@ -397,14 +397,14 @@
                 };
                 russian_number_layer {
 // ╭───────┬───────┬───────┬───────┬───────┬───────╮     ╭───────┬───────┬───────┬───────┬───────┬───────╮
-// |  </>  |  [/{  |  7/(  |   8   |  9/)  |  ]/}  |     |       |   ,   | SPACE |       |  ESC  |       |
+// |  </>  |  [/{  |  7/(  |   8   |  9/)  |  ]/}  |     |       |   ,   | SPACE |   .   |  ESC  |       |
 // |  @/#  |  ;/:  |  4/$  |   5   |  6/^  |   =   |     |  BKSP | RCTRL | RSHFT |  RALT |  RGUI |       |
 // |       |  `/~  |  1/'  |   2   |   3   |   \   |     |       |       |       |       |       |       |
 // ╰───────┴───────┴───────┼───────┼───────┼───────┤     ├───────┼───────┼───────┼───────────────────────╯
 //                         |  ./,  |  0/&  |   -   |     |       |  (0)  |       |
 //                         ╰───────┴───────┴───────╯     ╰───────┴───────┴───────╯
                         bindings = <
-          &rnumabr  &rnumlbr      &rnum7        &kp N8        &rnum9            &rnumrbr      &none         &kp COMMA         &kp SPACE     &none      &kp ESC        &none
+          &rnumabr  &rnumlbr      &rnum7        &kp N8        &rnum9            &rnumrbr      &none         &kp COMMA         &kp SPACE     &kp DOT    &kp ESC        &none
           &rnumat   &rnumscol     &rnum4        &kp N5        &rnum6            &kp EQUAL     &kp BSPC      &kp RCTRL         &kp RSHFT     &kp RALT   &kp RGUI       &none
           &none     &rnumgrv      &rnum1        &kp N2        &kp N3            &kp BSLH      &none         &none             &none         &none      &none          &none
                                             &rnumdorc &rnum0          &kp MINUS    &trans        &trans          &none
@@ -475,14 +475,14 @@
 // ╭───────┬───────┬───────┬───────┬───────┬───────╮     ╭───────┬───────┬───────┬───────┬───────┬───────╮
 // | REDO1 |  ESC  |  CUT  | COPY  | PASTE | UNDO  |     | SC_UP | SC_LT | MV_UP | SC_RT |  ALL  |  AMNE |
 // | REDO2 |  LGUI |  LALT | LSHFT | LCTRL | FAST  |     | SC_DN | MV_LT | MV_DN | MV_RT |  DEL  |   AME |
-// |       |       |       |       |       | SLOW  |     |       | SPACE |  RET  |  MB4  |  MB5  |  AMSE |
+// |       |       |       |       |       | SLOW  |     |  BKSP | SPACE |  RET  |  MB4  |  MB5  |  AMSE |
 // ╰───────┴───────┴───────┼───────┼───────┼───────┤     ├───────┼───────┼───────┼───────────────────────╯
 //                         |       |       |  (0)  |     |  RCLK |  LCLK |  MCLK |
 //                         ╰───────┴───────┴───────╯     ╰───────┴───────┴───────╯
                         bindings = <
           &kp LC(Y)     &kp ESC        &kp LC(X)      &kp LC(C)      &kp LC(V)      &kp LC(Z)      &msc SCRL_UP     &msc SCRL_LEFT   &mmv MOVE_UP   &msc SCRL_RIGHT   &kp LC(A)      &amenmosne
           &kp LC(LS(Z)) &kp LGUI       &kp LALT       &kp LSHFT      &kp LCTRL      &mo FMO        &msc SCRL_DOWN   &mmv MOVE_LEFT   &mmv MOVE_DOWN &mmv MOVE_RIGHT   &kp DEL        &amenmose
-          &none         &none          &none          &none          &none          &mo SMO        &none            &kp SPACE        &kp RET        &mkp MB4          &mkp MB5       &amenmosse
+          &none         &none          &none          &none          &none          &mo SMO        &kp BSPC         &kp SPACE        &kp RET        &mkp MB4          &mkp MB5       &amenmosse
                                              &trans        &none          &trans        &mkp RCLK      &mkp LCLK     &mkp MCLK
                         >;
                 };
