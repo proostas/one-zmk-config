@@ -20,7 +20,8 @@
 #define SMO 14  // Slow Mouse overlay
 #define BTN 15  // Buttons for external pointing device
 #define BTO 16  // BT and outputs
-#define DGR 17  // Dangerous behaviors
+#define CTX 17  // Context
+#define DGR 18  // Dangerous behaviors
 
 // Global U_ser settings
 #define U_TO_RUS_SCUT LC(LS(N2))
@@ -95,6 +96,11 @@
             bt_layer2 {
                 if-layers = <SYR NUR>;
                 then-layer = <BTO>;
+            };
+            
+            ctx_layer {
+                if-layers = <ENN MOS>;
+                then-layer = <CTX>;
             };
         };
         
@@ -332,7 +338,7 @@
           &none     &kp ESC       &kp CAPS      &to_russian   &tog RUS          &none         &kp PG_UP     &kp HOME         &kp UP        &kp END      &kp INS       &amennavne
           &none     &kp LGUI      &kp LALT      &kp LSHFT     &kp LCTRL         &tog BTN      &kp PG_DN     &kp LEFT         &kp DOWN      &kp RIGHT    &kp DEL       &amennave
           &none     &none         &none         &none         &none             &none         &none         &caps_word       &kp K_CMENU   &none        &none         &amennavse
-                                            &none     &none          &none         &kp TAB       &kp SPACE       &none
+                                            &none     &trans          &trans         &kp TAB       &kp SPACE       &none
                         >;
                 };
                 english_number_layer {
@@ -483,7 +489,7 @@
           &kp LC(Y)     &kp ESC        &kp LC(X)      &kp LC(C)      &kp LC(V)      &kp LC(Z)      &msc SCRL_UP     &msc SCRL_LEFT   &mmv MOVE_UP   &msc SCRL_RIGHT   &kp LC(A)      &amenmosne
           &kp LC(LS(Z)) &kp LGUI       &kp LALT       &kp LSHFT      &kp LCTRL      &mo FMO        &msc SCRL_DOWN   &mmv MOVE_LEFT   &mmv MOVE_DOWN &mmv MOVE_RIGHT   &kp DEL        &amenmose
           &none         &none          &none          &none          &none          &mo SMO        &kp BSPC         &kp SPACE        &kp RET        &mkp MB4          &mkp MB5       &amenmosse
-                                             &trans        &none          &trans        &mkp RCLK      &mkp LCLK     &mkp MCLK
+                                             &trans        &trans          &trans        &mkp RCLK      &mkp LCLK     &mkp MCLK
                         >;
                 };
                 fast_mouse_layer {
@@ -543,7 +549,22 @@
           &none         &none            &none          &out OUT_TOG   &out OUT_BLE   &out OUT_USB   &none       &none       &none        &none       &none      &none
           &none         &btsel 0         &btsel 1       &btsel 2       &btsel 3       &btsel 4       &none       &none       &none        &none       &none      &none
           &none         &bt BT_DISC 0    &bt BT_DISC 1  &bt BT_DISC 2  &bt BT_DISC 3  &bt BT_DISC 4  &none       &none       &none        &none       &none      &none
-                                             &none        &none         &trans         &trans      &none   &none
+                                             &none        &none         &none         &trans      &trans   &none
+                        >;
+                };
+                context_layer {
+// ╭───────┬───────┬───────┬───────┬───────┬───────╮     ╭───────┬───────┬───────┬───────┬───────┬───────╮
+// |       |       |       |       |       |       |     |       |       |       |       |       |       |
+// |       |       |       |       |       |       |     |       |  CPP  | CMAKE |       |       |       |
+// |       |       |       |       |       |       |     |       |       |       |       |       |       |
+// ╰───────┴───────┴───────┼───────┼───────┼───────┤     ├───────┼───────┼───────┼───────────────────────╯
+//                         |       |  (1)  |  (0)  |     |       |       |       |
+//                         ╰───────┴───────┴───────╯     ╰───────┴───────┴───────╯
+                        bindings = <
+          &none         &none       &none      &none     &none       &none         &none       &none       &none        &none       &none      &none
+          &none         &none       &none      &none     &none       &none         &none       &tog EPP    &none        &none       &none      &none
+          &none         &none       &none      &none     &none       &none         &none       &none       &none        &none       &none      &none
+                                               &none     &trans      &trans        &none       &none       &none
                         >;
                 };
                 danger_layer {
