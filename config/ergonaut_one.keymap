@@ -539,14 +539,14 @@
                 };
                 bluetooth_layer {
 // ╭───────┬───────┬───────┬───────┬───────┬───────╮     ╭───────┬───────┬───────┬───────┬───────┬───────╮
-// |       |       |       |  OUT  |  BLE  |  USB  |     |       |       |       |       |       |       |
+// |       |       |       |  BLE  |  USB  |       |     |       |       |       |       |       |       |
 // |       |  BT0  |  BT1  |  BT2  |  BT3  |  BT4  |     |       |       |       |       |       |       |
 // |       |  DC0  |  DC1  |  DC2  |  DC3  |  DC4  |     |       |       |       |       |       |       |
 // ╰───────┴───────┴───────┼───────┼───────┼───────┤     ├───────┼───────┼───────┼───────────────────────╯
 //                         |       |       |       |     |  (0)  |  (1)  |       |
 //                         ╰───────┴───────┴───────╯     ╰───────┴───────┴───────╯
                         bindings = <
-          &none         &none            &none          &out OUT_TOG   &out OUT_BLE   &out OUT_USB   &none       &none       &none        &none       &none      &none
+          &none         &none            &none          &out OUT_BLE   &out OUT_USB   &none          &none       &none       &none        &none       &none      &none
           &none         &btsel 0         &btsel 1       &btsel 2       &btsel 3       &btsel 4       &none       &none       &none        &none       &none      &none
           &none         &bt BT_DISC 0    &bt BT_DISC 1  &bt BT_DISC 2  &bt BT_DISC 3  &bt BT_DISC 4  &none       &none       &none        &none       &none      &none
                                              &none        &none         &none         &trans      &trans   &none
